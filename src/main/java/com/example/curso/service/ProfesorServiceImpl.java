@@ -49,6 +49,7 @@ public class ProfesorServiceImpl implements IProfesorService{
 		
 	}
 
+	
 	@Override
 	@Transactional
 	public Profesor updateProfesor(Profesor profesor) {
@@ -89,6 +90,12 @@ public class ProfesorServiceImpl implements IProfesorService{
 	public void save(Profesor profesor) {
 		// TODO Auto-generated method stub
 		profesorDao.save(profesor);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteAllProfesor() {
+		profesorDao.deleteAll();
 	}
 
 }

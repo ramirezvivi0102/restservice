@@ -19,48 +19,42 @@ import com.example.curso.service.ICursoService;
 @RequestMapping("/api")
 public class CursoRestController {
 
-	
 	@Autowired
 	private ICursoService cursoService;
 	
 	@GetMapping("/cursos")
 	public ResponseEntity<?> listaCursos(){
 		List<Curso> listaCursos = cursoService.findAll();
-		if(listaCursos != null) {
-			if(listaCursos.size() !=0) {
+		if(listaCursos!=null) {
+			if(listaCursos.size()!=0) {
 				return new ResponseEntity<>(listaCursos, HttpStatus.OK);
 			}else {
-				return new ResponseEntity<Void>( HttpStatus.NOT_FOUND);
+				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 			}
 		}else {
-			return new ResponseEntity<Void>( HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
 	}
-
-
-
+	
 	@PostMapping("/crear_curso")
-	public ResponseEntity<?> agregarCurso( @RequestBody Curso curso){
-		
+	public ResponseEntity<?> agregarCurso(@RequestBody Curso curso){
 		cursoService.saveCurso(curso);
-		
-		return new ResponseEntity<Void>( HttpStatus.CREATED);
+		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/cursos_profesor")
 	public ResponseEntity<?> verCursosProfesor(@RequestBody Profesor profesor){
 		List<Curso> listaCursos = cursoService.getCursosProfesor(profesor.getId());
-		if(listaCursos != null) {
-			if(listaCursos.size() !=0) {
+		if(listaCursos!=null) {
+			if(listaCursos.size()!=0) {
 				return new ResponseEntity<>(listaCursos, HttpStatus.OK);
 			}else {
-				return new ResponseEntity<Void>( HttpStatus.NOT_FOUND);
+				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 			}
 		}else {
-			return new ResponseEntity<Void>( HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
-	}
-}
+	}}
 
 
 

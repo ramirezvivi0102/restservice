@@ -16,6 +16,7 @@ public interface IProfesorService {
 	public Profesor updateProfesor(Profesor profesor);
 	public Optional<Profesor> findProfesorById(Long profesor_id);
 	public void deleteProfesor(Long id);
+	public void deleteAllProfesor();
 	public Profesor findById(Long id);
 	public Profesor findByIdSQL(Long id);
 	
